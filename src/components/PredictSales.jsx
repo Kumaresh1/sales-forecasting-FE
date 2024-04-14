@@ -1,5 +1,6 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import { Form, Input, Button, Select, DatePicker } from "antd";
+
 
 const { Option } = Select;
 
@@ -7,6 +8,8 @@ export const PredictSales = () => {
   const [predictedSales, setPredictedSales] = useState(null);
   const [selectedProductLine, setSelectedProductLine] = useState(null);
   const [selectedDate, setSelectedDate] = useState(null);
+
+
 
   const onFinish = (values) => {
     // Perform prediction logic here
