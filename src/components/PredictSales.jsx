@@ -1,6 +1,5 @@
-import React, { useEffect, useState } from "react";
-import { Form, Input, Button, Select, DatePicker } from "antd";
-
+import { useState } from "react";
+import { Form, Button, Select, DatePicker } from "antd";
 
 const { Option } = Select;
 
@@ -9,11 +8,7 @@ export const PredictSales = () => {
   const [selectedProductLine, setSelectedProductLine] = useState(null);
   const [selectedDate, setSelectedDate] = useState(null);
 
-
-
   const onFinish = (values) => {
-    // Perform prediction logic here
-    // For simplicity, we'll just set a random predicted sales value
     const randomSales = Math.floor(Math.random() * 10000);
     setPredictedSales(randomSales);
     setSelectedProductLine(values.productLine);

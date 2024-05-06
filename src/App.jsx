@@ -1,15 +1,14 @@
-import React, { useState } from "react";
+import { useState } from "react";
 import {
+  DashboardFilled,
   DesktopOutlined,
-  FileOutlined,
   PieChartOutlined,
-  TeamOutlined,
-  UserOutlined,
 } from "@ant-design/icons";
-import { Breadcrumb, Layout, Menu, theme } from "antd";
+import { Layout, Menu, theme } from "antd";
 import { PredictSales } from "./components/PredictSales";
 import { VendorsTable } from "./components/Vendors";
-const { Header, Content, Footer, Sider } = Layout;
+import Dashboard from "./components/DashBoard";
+const { Header, Content, Sider } = Layout;
 function getItem(label, key, icon, children) {
   return {
     key,
@@ -22,11 +21,15 @@ function getItem(label, key, icon, children) {
 const App = () => {
   const [collapsed, setCollapsed] = useState(false);
   const {
-    token: { colorBgContainer, borderRadiusLG },
+    token: { colorBgContainer },
   } = theme.useToken();
 
-  const [activeKey, setactiveKey] = useState("1");
+  const [activeKey, setactiveKey] = useState("0");
   const items = [
+    getItem("", "5", <div className="hidden " />),
+
+    getItem("Dashboard", "0", <DashboardFilled />),
+
     getItem("Predict Sales", "1", <PieChartOutlined />),
     getItem("Vendors", "2", <DesktopOutlined />),
   ];
@@ -44,7 +47,7 @@ const App = () => {
         <div className="demo-logo-vertical" />
         <Menu
           theme="dark"
-          defaultSelectedKeys={["1"]}
+          defaultSelectedKeys={["0"]}
           mode="inline"
           items={items}
           onClick={({ key }) => setactiveKey(key)}
@@ -61,7 +64,11 @@ const App = () => {
           className="text-lg font-bold  "
         >
           <div className="mt-2 -ml-4">
-            {activeKey === "1" ? "Sales Forecasting" : "Vendors"}
+            {activeKey === "1"
+              ? "Sales Forecasting"
+              : activeKey === "0"
+              ? "Dashboard"
+              : "Vendors"}
           </div>
         </Header>
         <Content
@@ -69,7 +76,13 @@ const App = () => {
             margin: "0 16px",
           }}
         >
-          {activeKey === "1" ? <PredictSales /> : <VendorsTable />}
+          {activeKey === "1" ? (
+            <PredictSales />
+          ) : activeKey === "0" ? (
+            <Dashboard />
+          ) : (
+            <VendorsTable />
+          )}
         </Content>
       </Layout>
     </Layout>
