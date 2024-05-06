@@ -10,8 +10,6 @@ export const VendorsTable = () => {
     fetch(textfile)
       .then((r) => r.text())
       .then((text) => {
-        console.log("Output");
-
         let rows = text.split("\n");
         let columns = rows[0].split(",").map((value) => ({
           title: value,
@@ -24,7 +22,6 @@ export const VendorsTable = () => {
         let uniqueWare = new Set();
         rows.slice(1, rows.length).map((row) => {
           const rowValues = row.split(",");
-          console.log(rowValues);
           let obj = {};
           rowValues.map((value, index) => {
             if (index === 5) uniqueWare.add(value);
@@ -32,7 +29,6 @@ export const VendorsTable = () => {
           });
           rowData.push(obj);
         });
-        console.log(uniqueWare, "ROW");
         setData(rowData);
       });
   }, []);

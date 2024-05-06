@@ -9,6 +9,7 @@ import SalesPolarChart from "./sub-components/PolarChart";
 
 import { Chart, registerables } from "chart.js";
 import SalesRadarChart from "./sub-components/RadarChart";
+
 Chart.register(...registerables);
 
 const Dashboard = () => {
@@ -115,6 +116,10 @@ const Dashboard = () => {
               />
             </div>
           </div>
+
+          <Divider />
+
+          {/* <SalesBarChart salesData={salesData} /> */}
         </div>
       ) : (
         <Spin />
