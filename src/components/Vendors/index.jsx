@@ -17,12 +17,20 @@ export const VendorsTable = () => {
           key: value,
           render: (text) => <a>{text}</a>,
         }));
+
+        columns.push({
+          title: "Discount",
+          dataIndex: "Discount",
+          key: "Discount",
+          render: (text) => <a>{text}%</a>,
+        });
+
         setColumns(columns);
         let rowData = [];
         let uniqueWare = new Set();
         rows.slice(1, rows.length).map((row) => {
           const rowValues = row.split(",");
-          let obj = {};
+          let obj = { Discount: (Math.random() * 20).toFixed(2) };
           rowValues.map((value, index) => {
             if (index === 5) uniqueWare.add(value);
             obj[columns[index]?.title] = value;
