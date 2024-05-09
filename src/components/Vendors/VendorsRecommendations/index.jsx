@@ -53,13 +53,16 @@ const TopVendorsList = ({ data }) => {
           <div key={category}>
             <List
               dataSource={vendors}
-              renderItem={(vendor) => (
-                <List.Item>
+              renderItem={(vendor, index) => (
+                <List.Item
+                  className={`rounded ${index === 0 ? "bg-green-200" : ""}`}
+                >
                   <List.Item.Meta
                     title={vendor.vendorname}
                     description={`Discount: ${vendor.Discount}`}
+                    className="px-2"
                   />
-                  <div>
+                  <div className="px-2">
                     <p>Vendor ID: {vendor.vendorid}</p>
                     <p>Vendor Type: {vendor.vendortype}</p>
                   </div>

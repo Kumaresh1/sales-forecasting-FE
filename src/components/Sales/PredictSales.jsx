@@ -57,58 +57,67 @@ export const PredictSales = () => {
   };
 
   return (
-    <Card className="my-5">
-      <StockRecommendations salesData={salesData} />
-
+    <div className="my-5">
+      <Card>
+        <StockRecommendations salesData={salesData} />
+      </Card>
       <Divider />
-      <Typography.Title level={4}>Sales Prediction Form</Typography.Title>
-      <Form layout="vertical" name="sales_prediction_form" onFinish={onFinish}>
-        <Form.Item
-          label="Product Line"
-          name="productLine"
-          rules={[{ required: true, message: "Please select a product line" }]}
+
+      <Card>
+        <Typography.Title level={4}>Sales Prediction Form</Typography.Title>
+        <Form
+          layout="vertical"
+          name="sales_prediction_form"
+          onFinish={onFinish}
         >
-          <Select placeholder="Select a product line">
-            <Option value={1}>Health and beauty</Option>
-            <Option value={2}>Electronic accessories</Option>
-            <Option value={3}>Home and lifestyle</Option>
-            <Option value={4}>Sports and travel</Option>
-            <Option value={5}>Food and beverages</Option>
-            <Option value={6}>Fashion accessories</Option>
-          </Select>
-        </Form.Item>
+          <Form.Item
+            label="Product Line"
+            name="productLine"
+            rules={[
+              { required: true, message: "Please select a product line" },
+            ]}
+          >
+            <Select placeholder="Select a product line">
+              <Option value={1}>Health and beauty</Option>
+              <Option value={2}>Electronic accessories</Option>
+              <Option value={3}>Home and lifestyle</Option>
+              <Option value={4}>Sports and travel</Option>
+              <Option value={5}>Food and beverages</Option>
+              <Option value={6}>Fashion accessories</Option>
+            </Select>
+          </Form.Item>
 
-        <Form.Item label="Branch" name="branch" initialValue={2}>
-          <Select>
-            <Option value={1}>Branch A</Option>
-            <Option value={2}>Branch B</Option>
-            <Option value={3}>Branch C</Option>
-          </Select>
-        </Form.Item>
+          <Form.Item label="Branch" name="branch" initialValue={2}>
+            <Select>
+              <Option value={1}>Branch A</Option>
+              <Option value={2}>Branch B</Option>
+              <Option value={3}>Branch C</Option>
+            </Select>
+          </Form.Item>
 
-        <Form.Item label="City" name="city" initialValue={1}>
-          <Select>
-            <Option value={0}>Yangon</Option>
-            <Option value={1}>Naypyitaw</Option>
-            <Option value={2}>Mandalay</Option>
-          </Select>
-        </Form.Item>
+          <Form.Item label="City" name="city" initialValue={1}>
+            <Select>
+              <Option value={0}>Yangon</Option>
+              <Option value={1}>Naypyitaw</Option>
+              <Option value={2}>Mandalay</Option>
+            </Select>
+          </Form.Item>
 
-        <Form.Item label="Customer Type" name="customerType" initialValue={0}>
-          <Select>
-            <Option value={0}>Member</Option>
-            <Option value={1}>Non-Member</Option>
-          </Select>
-        </Form.Item>
+          <Form.Item label="Customer Type" name="customerType" initialValue={0}>
+            <Select>
+              <Option value={0}>Member</Option>
+              <Option value={1}>Non-Member</Option>
+            </Select>
+          </Form.Item>
 
-        <Form.Item label="Gender" name="gender" initialValue={0}>
-          <Select>
-            <Option value={0}>Male</Option>
-            <Option value={1}>Female</Option>
-          </Select>
-        </Form.Item>
+          <Form.Item label="Gender" name="gender" initialValue={0}>
+            <Select>
+              <Option value={0}>Male</Option>
+              <Option value={1}>Female</Option>
+            </Select>
+          </Form.Item>
 
-        {/* <Form.Item
+          {/* <Form.Item
           label="Date"
           name="date"
           rules={[{ required: true, message: "Please select a date" }]}
@@ -116,22 +125,23 @@ export const PredictSales = () => {
           <DatePicker />
         </Form.Item> */}
 
-        <Form.Item>
-          <Button type="primary" htmlType="submit">
-            Predict Sales
-          </Button>
-        </Form.Item>
-      </Form>
+          <Form.Item>
+            <Button type="primary" htmlType="submit">
+              Predict Sales
+            </Button>
+          </Form.Item>
+        </Form>
 
-      {predictedSales !== null && (
-        <div>
-          <h2>
-            Predicted Sales for {selectedProductLine} on{" "}
-            {selectedDate && selectedDate.format("DD/MM/YYYY")}:
-          </h2>
-          <p>{predictedSales}</p>
-        </div>
-      )}
-    </Card>
+        {predictedSales !== null && (
+          <div>
+            <h2>
+              Predicted Sales for {selectedProductLine} on{" "}
+              {selectedDate && selectedDate.format("DD/MM/YYYY")}:
+            </h2>
+            <p>{predictedSales}</p>
+          </div>
+        )}
+      </Card>
+    </div>
   );
 };
