@@ -1,14 +1,43 @@
-import { useState } from "react";
-import { Form, Button, Select, Card } from "antd";
+import { useEffect, useState } from "react";
+import { Form, Button, Select, Card, Divider, Typography } from "antd";
 import axios from "axios";
-import { SERVER_URL } from "../env";
-import { categories } from "../constants";
+import { SERVER_URL } from "../../env";
+import { categories } from "../../constants";
+import StockRecommendations from "./StockRecommendations";
+import textfile from "../../assets/dataset/sales.txt";
+
 const { Option } = Select;
 
 export const PredictSales = () => {
   const [predictedSales, setPredictedSales] = useState(null);
   const [selectedProductLine, setSelectedProductLine] = useState(null);
   const [selectedDate, setSelectedDate] = useState(null);
+
+  const [salesData, setSalesData] = useState([]);
+
+  useEffect(() => {
+    fetch(textfile)
+      .then((r) => r.text())
+      .then((text) => {
+        let rows = text.split("\n");
+        let columns = rows[0].split(",").map((value) => ({
+          title: value,
+          dataIndex: value,
+          key: value,
+          render: (text) => <a>{text}</a>,
+        }));
+        let rowData = [];
+        rows.slice(1).forEach((row) => {
+          const rowValues = row.split(",");
+          let obj = {};
+          rowValues.forEach((value, index) => {
+            obj[columns[index].title] = value;
+          });
+          rowData.push(obj);
+        });
+        setSalesData(rowData);
+      });
+  }, []);
 
   const onFinish = async (values) => {
     const payload = {
@@ -29,7 +58,10 @@ export const PredictSales = () => {
 
   return (
     <Card className="my-5">
-      {/* <Typography.Title level={4}>Sales Prediction Form</Typography.Title> */}
+      <StockRecommendations salesData={salesData} />
+
+      <Divider />
+      <Typography.Title level={4}>Sales Prediction Form</Typography.Title>
       <Form layout="vertical" name="sales_prediction_form" onFinish={onFinish}>
         <Form.Item
           label="Product Line"

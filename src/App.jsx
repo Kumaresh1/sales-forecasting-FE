@@ -5,9 +5,9 @@ import {
   PieChartOutlined,
 } from "@ant-design/icons";
 import { Layout, Menu, theme } from "antd";
-import { PredictSales } from "./components/PredictSales";
-import { VendorsTable } from "./components/Vendors";
+import Vendors from "./components/Vendors";
 import Dashboard from "./components/DashBoard";
+import { PredictSales } from "./components/Sales/PredictSales";
 const { Header, Content, Sider } = Layout;
 function getItem(label, key, icon, children) {
   return {
@@ -30,7 +30,7 @@ const App = () => {
 
     getItem("Dashboard", "0", <DashboardFilled />),
 
-    getItem("Predict Sales", "1", <PieChartOutlined />),
+    getItem(" Sales", "1", <PieChartOutlined />),
     getItem("Vendors", "2", <DesktopOutlined />),
   ];
   return (
@@ -81,7 +81,7 @@ const App = () => {
           ) : activeKey === "0" ? (
             <Dashboard />
           ) : (
-            <VendorsTable />
+            <Vendors />
           )}
         </Content>
       </Layout>

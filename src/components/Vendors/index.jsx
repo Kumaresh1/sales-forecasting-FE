@@ -1,11 +1,19 @@
-import { Space, Table, Tag } from "antd";
+import { Tabs } from "antd";
+import { VendorRecommendations } from "./VendorsRecommendations";
+import { VendorsTable } from "./VendorsView";
 import { useEffect, useState } from "react";
 
 import textfile from "../../assets/dataset/vendors.txt";
+import { vendors } from "../../assets/dataset/vendors";
 
-export const VendorsTable = () => {
+const onChange = (key) => {
+  console.log(key);
+};
+
+const Vendors = () => {
   const [columns, setColumns] = useState([]);
-  const [data, setData] = useState([]);
+  const [data, setData] = useState(vendors);
+
   useEffect(() => {
     fetch(textfile)
       .then((r) => r.text())
@@ -37,13 +45,22 @@ export const VendorsTable = () => {
           });
           rowData.push(obj);
         });
-        setData(rowData);
+        // setData(rowData);
       });
   }, []);
 
-  return (
-    <div className="overflow-scroll">
-      <Table columns={columns} dataSource={data} />
-    </div>
-  );
+  const items = [
+    {
+      key: "1",
+      label: "Recommendations",
+      children: <VendorRecommendations data={data} />,
+    },
+    {
+      key: "2",
+      label: "Dataset",
+      children: <VendorsTable columns={columns} data={data} />,
+    },
+  ];
+  return <Tabs defaultActiveKey="1" items={items} onChange={onChange} />;
 };
+export default Vendors;
