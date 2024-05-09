@@ -65,7 +65,7 @@ const App = () => {
         >
           <div className="mt-2 -ml-4">
             {activeKey === "1"
-              ? "Sales Forecasting"
+              ? "Sales "
               : activeKey === "0"
               ? "Dashboard"
               : "Vendors"}

@@ -1,4 +1,4 @@
-import { Tabs } from "antd";
+import { Card, Tabs } from "antd";
 import { VendorRecommendations } from "./VendorsRecommendations";
 import { VendorsTable } from "./VendorsView";
 import { useEffect, useState } from "react";
@@ -61,6 +61,15 @@ const Vendors = () => {
       children: <VendorsTable columns={columns} data={data} />,
     },
   ];
-  return <Tabs defaultActiveKey="1" items={items} onChange={onChange} />;
+  return (
+    <Card className="my-5">
+      <Tabs
+        defaultActiveKey="1"
+        items={items}
+        onChange={onChange}
+        className="-mt-3"
+      />
+    </Card>
+  );
 };
 export default Vendors;
