@@ -62,7 +62,7 @@ const Vendors = () => {
     },
   ];
   return (
-    <Card className="my-5">
+    <Card className="my-5 overflow-scroll">
       <Tabs
         defaultActiveKey="1"
         items={items}

@@ -43,6 +43,7 @@ const App = () => {
         collapsible
         collapsed={collapsed}
         onCollapse={(value) => setCollapsed(value)}
+        className="sticky"
       >
         <div className="demo-logo-vertical" />
         <Menu
