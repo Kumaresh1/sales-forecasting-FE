@@ -67,7 +67,7 @@ export const PredictSales = () => {
     ]);
 
     setPredictedSales(data.predicted_sales_total?.[0] || "Nan");
-    setSelectedProductLine(categories[values.productLine]);
+    setSelectedProductLine(categories[+values.productLine - 1]);
     setSelectedDate(values.date);
   };
 
