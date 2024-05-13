@@ -1,0 +1,38 @@
+export const dataSource = [
+  {
+    key: "1",
+    models: "Linear Regression",
+    MSE: "6461.36",
+    RMSE: "80.38",
+    MAE: "61.39",
+    R2: "0.90",
+    Accuracy: "89.63%",
+  },
+  {
+    key: "2",
+    models: "Random Forest",
+    MSE: "135.23",
+    RMSE: "11.63",
+    MAE: "7.69",
+    R2: "1.00",
+    Accuracy: "99.78%",
+  },
+  {
+    key: "3",
+    models: "GBT",
+    MSE: "113.29",
+    RMSE: "10.64",
+    MAE: "7.50",
+    R2: "1.00",
+    Accuracy: "99.82%",
+  },
+  {
+    key: "4",
+    models: "XGBoost",
+    MSE: "108.20",
+    RMSE: "10.40",
+    MAE: "7.62",
+    R2: "0.998",
+    Accuracy: "99.83%",
+  },
+];

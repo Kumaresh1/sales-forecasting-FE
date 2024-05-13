@@ -15,6 +15,7 @@ import { SERVER_URL } from "../../env";
 import { categories } from "../../constants";
 import StockRecommendations from "./StockRecommendations";
 import textfile from "../../assets/dataset/sales.txt";
+import PerformanceAnalytics from "./PerformanceAnalytics";
 const { Panel } = Collapse;
 
 const { Option } = Select;
@@ -172,6 +173,8 @@ export const PredictSales = () => {
           </div>
         )}
       </Card>
+
+      <PerformanceAnalytics />
     </div>
   );
 };
